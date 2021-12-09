@@ -1,0 +1,28 @@
+stages:
+  - build
+  - deploy
+
+build prod:
+  image: node:latest
+  stage: build
+  only:
+    - tags
+    - master
+  script:
+    - npm install
+    - npx @11ty/eleventy
+  artifacts:
+    paths:
+      - _site/
+    expire_in: 1 hour
+
+deploy prod:
+  image: python:latest
+  stage: deploy
+  only:
+    - tags
+    - master
+  script:
+    - pip install awscli
+    - aws s3 sync ./_site s3://$S3_BUCKET_NAME/ --acl public-read
+    - aws cloudfront create-invalidation --distribution-id $CDN_DISTRIBUTION_ID --paths "/*"
