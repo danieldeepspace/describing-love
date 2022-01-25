@@ -22,3 +22,10 @@ cite {
 	font-weight: 600;
 	font-style: normal;
 }
+.doubleSpacer {
+	display: block;
+	margin: var(--space-md) auto;
+	height: var(--border-width);
+	width: 25%;
+	background: #ccc;
+}
