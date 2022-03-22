@@ -1,5 +1,5 @@
 {
-	"name": "dsr",
+	"name": "Describe Love",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
@@ -13,11 +13,11 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@11ty/eleventy": "^0.12.1",
-		"concurrently": "^6.2.0",
-		"sass": "^1.34.0"
+		"@11ty/eleventy": "^1.0.0",
+		"concurrently": "latest",
+		"sass": "latest"
 	},
 	"dependencies": {
-		"@11ty/eleventy-img": "^0.9.0"
+		"@11ty/eleventy-img": "^2.0.0"
 	}
 }

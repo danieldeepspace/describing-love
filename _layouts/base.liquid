@@ -34,13 +34,13 @@
 <body class="{{ bodyClass }} {{ page.fileSlug  }}">
     
 	<main class="page">
-		{% include header %}
+		{% include 'header' %}
 		{{ content }}
 	</main>
 
-	{% include footer %}
+	{% include 'footer' %}
 
-	{% include scripts %}
+	{% include 'scripts' %}
 
 </body>
 </html>
