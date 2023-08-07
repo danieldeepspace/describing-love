@@ -1,16 +1,29 @@
 const getConnected = document.getElementById('get-connected');
 const formWrapper = document.getElementById('form-wrapper');
 const queryString = window.location.search;
-const iframe = document.getElementById('iframe');
+const iframeList = document.querySelectorAll('#iframe');
 const buttonList = document.getElementsByClassName('button')
 for (let button of buttonList) {
 	button.href = button.href + queryString
 }
 
-if (iframe) {
-	iframe.src = 'https://oh.connectionofcommunity.com/oh-form/cn/'+queryString;
+for (let iframe of iframeList) {
+	iframe.src = 'https://oh.connectionofcommunity.com/oh-form/cn/' + queryString;
 	// iframe.src = 'http://localhost:3000/oh-form/cn'+queryString;
 }
+
+/* if (getConnected) {
+	getConnected.addEventListener('click', (e) => {
+		getConnected.classList.add('hidden');
+		const iframe = document.createElement('iframe');
+
+		//iframe.src = 'http://oh.lvh.me:3000/cn?utm_countrycode=CN';
+		iframe.src = 'https://oh.connect-grow.com/cn?utm_countrycode=CN';
+		formWrapper.appendChild(iframe);
+	});
+}
+ */
+
 // Use site url as form submission origin
 window.addEventListener('message', (event) => {
 	console.log(event.origin);
@@ -25,7 +38,7 @@ window.addEventListener('message', (event) => {
 		console.log('sending origin to Seeker Portal!')
 	  // Send the parent URL back to the iframe
 	  event.source.postMessage(
-		{ type: 'parentURL', url: window.location.href },
+		{ type: 'parentURL', url: window.location.href.split('?')[0] },
 		event.origin
 	  );
 	}
